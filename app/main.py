@@ -26,6 +26,8 @@ def classify():
     if (request.json['image']): 
         image_url = request.json['image']
 
+        print(image_url)
+
         result = classifyImage(image_url)
         print('Model classification: ' + result)        
         return jsonify(
