@@ -29,16 +29,15 @@ def classify():
         print(image_url)
 
         result = classifyImage(image_url)
-        print('Model classification: ' + result)        
+        print('Model classification:')  
+        print(result)      
         return jsonify(
             {
                 'meta':  {
                     'statusCode' : 200,
                     'message': 'Ok'
                 },
-                'data': {
-                    'preds' : result
-                }
+                'data': result
             }
         )
     return jsonify(

@@ -54,7 +54,12 @@ def getPrediction(img_bytes, model):
 def classifyImage(image_url):
     downloadImage(image_url)
     prediction = getPrediction(file_name, model)
-    index = np.argmax(prediction)
-    result = classes[index]
+    indices = np.argsort(prediction[0])[-5:][::-1]
+    result = []
+    for index in indices:
+        pred = {
+            'slug': classes[index]
+        }
+        result.append(pred)
     deleteImage()
     return result
